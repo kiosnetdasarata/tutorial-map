@@ -1,10 +1,16 @@
 let map, infoWindow;
 
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
-  map = new Map(document.getElementById("map"), {
+// async function initMap() {
+//   const { Map } = await google.maps.importLibrary("maps");
+//   map = new Map(document.getElementById("map"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 25,
+//   });
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 25,
+    zoom: 6,
   });
 
     infoWindow = new google.maps.InfoWindow();
@@ -28,7 +34,7 @@ async function initMap() {
           var new_lng = position.coords.longitude.toString();
 
           infoWindow.setPosition(pos);
-          infoWindow.setContent("Lat :" + new_lat, "Lng :" + new_lng);
+          infoWindow.setContent("Lat :" + new_lat +", " + "Lng :" + new_lng);
           infoWindow.open(map);
           map.setCenter(pos);
         },
